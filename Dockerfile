@@ -6,9 +6,8 @@ COPY . .
 
 EXPOSE 9145
 
-RUN pip install --no-cache-dir -r requirements.txt && \
-    python ./setup.py install && \
-    export PYTHONPATH=$PYTHONPATH:/usr/src/es_search_exporter/scripts
+RUN export PYTHONPATH=$PYTHONPATH:/usr/src/es_search_exporter/scripts && \
+    python ./setup.py install
 
 CMD [ "python", "./scripts/es_search_exporter" ]
 

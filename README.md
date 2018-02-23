@@ -7,7 +7,7 @@ cluster and return the number of documents found for use by the
 ## Installation 
 
 ```
-pip install es_search_exporter
+docker run -d --name es_search_exporter -p <port>:9145 -v <fileDirectory>:/usr/src/es_search_exporter/es_search.yaml  es_search_exporter:1.0
 ```
 
 ### ES Search Exporter Configuration
