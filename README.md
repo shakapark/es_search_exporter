@@ -23,22 +23,22 @@ scrape_configs:
   - job_name: 'es_search_exporter'
     static_configs:
       - targets:
-        - elastichost.example.com
+        - elastichost.example.com:port
     params:
       search: ['example']
     relabel_configs:
       - source_labels: [__address__]
         regex: (.*?)(:80)?
-        target_label: __param_address
-        replacement: ${1}
-      - source_labels: [__param_address]
-        regex: (.*)
-        target_label: instance
+        target_label: __param_target
         replacement: ${1}
       - source_labels: []
         regex: .*
         target_label: __address__
         replacement: 127.0.0.1:9920 # ES Search Exporter
+      - source_labels: [__address__]
+        regex: (.*)
+        target_label: instance 
+        replacement: ${1}
 ```
 
 ## Developing Locally
