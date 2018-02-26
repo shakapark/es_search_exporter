@@ -13,9 +13,9 @@ def collect_es(name, config, host, kerberos, tls):
         s = ''
         if tls:
             s = 's'
-        r = requests.get("http{}://{}/{}/_search".format(s, host, config['index']),
+        r = requests.post("http{}://{}/{}/_search".format(s, host, config['index']),
             headers = {"Content-Type": "application/json"},
-            data = json.dumps({"query": config['query'], "size": 0}),
+            data = json.dumps({"query": config['query']}),
             auth = a,
         )
     except:

@@ -4,12 +4,11 @@ searches:
     index: 'logstash-24hours'
     query:
       bool:
-        filter:
-        - query_string:
-            analyze_wildcard: true
+        must:
+          query_string:
             query: <query>
+        filter:
           range:
             "@timestamp":
               gte: now-5m
               lte: now
-              format: epoch_millis
